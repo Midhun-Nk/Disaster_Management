@@ -1,6 +1,6 @@
 import { CloudSun, Phone, BookOpen, MapPin, ShieldAlert } from "lucide-react";
 
-export function DashboardPage({ navigate }) {
+function DashboardPage({ navigate }) {
   return (
     <div className="space-y-6">
       {/* Latest Alert Section */}
@@ -133,3 +133,5 @@ export function DashboardPage({ navigate }) {
     </div>
   );
 }
+
+export default DashboardPage;

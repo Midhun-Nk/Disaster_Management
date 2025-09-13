@@ -1,7 +1,23 @@
-export function RegisterPage({ onLogin, onNavigate }) {
-  const handleSubmit = (e) => {
+import { useState } from "react";
+import { AuthPage } from "../components/AuthPage";
+import axios from "axios";
+
+export function RegisterPage() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onLogin(); // Simulate successful registration and login
+    const payload = {
+      name,
+      email,
+      password,
+    };
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
+    const { data } = await axios.post(
+      `${backendUrl}/api/user/register`,
+      payload
+    );
   };
   return (
     <AuthPage>
@@ -15,6 +31,10 @@ export function RegisterPage({ onLogin, onNavigate }) {
           </label>
           <input
             type="text"
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
             required
             className="w-full rounded-md border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
           />
@@ -26,6 +46,10 @@ export function RegisterPage({ onLogin, onNavigate }) {
           <input
             type="email"
             required
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
             className="w-full rounded-md border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
           />
         </div>
@@ -36,6 +60,10 @@ export function RegisterPage({ onLogin, onNavigate }) {
           <input
             type="password"
             required
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
             className="w-full rounded-md border-slate-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
           />
         </div>
@@ -48,10 +76,7 @@ export function RegisterPage({ onLogin, onNavigate }) {
       </form>
       <p className="text-center text-sm text-slate-500 mt-6">
         Already have an account?{" "}
-        <button
-          onClick={() => onNavigate("login")}
-          className="font-medium text-indigo-600 hover:underline"
-        >
+        <button className="font-medium text-indigo-600 hover:underline">
           Sign In
         </button>
       </p>

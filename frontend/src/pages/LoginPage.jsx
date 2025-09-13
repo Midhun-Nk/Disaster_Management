@@ -1,9 +1,8 @@
 import { AuthPage } from "../components/AuthPage";
 
-export function LoginPage({ onLogin, onNavigate }) {
+export function LoginPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
-    onLogin(); // Simulate successful login
   };
   return (
     <AuthPage>
@@ -42,10 +41,7 @@ export function LoginPage({ onLogin, onNavigate }) {
       </form>
       <p className="text-center text-sm text-slate-500 mt-6">
         Don't have an account?{" "}
-        <button
-          onClick={() => onNavigate("register")}
-          className="font-medium text-indigo-600 hover:underline"
-        >
+        <button className="font-medium text-indigo-600 hover:underline">
           Sign Up
         </button>
       </p>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export function SettingsPage() {
+function SettingsPage() {
   const [notifications, setNotifications] = useState(true);
   return (
     <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-md max-w-4xl mx-auto">
@@ -90,3 +90,5 @@ export function SettingsPage() {
     </div>
   );
 }
+
+export default SettingsPage;
